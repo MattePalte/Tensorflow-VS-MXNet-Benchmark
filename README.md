@@ -46,6 +46,12 @@ The focus is on the train part only.
     https://medium.com/@mgazar/lenet-5-in-9-lines-of-code-using-keras-ac99294c8086
     The keras version is usable but the low level has to be readapted
 
+1. ### Which weights are learned in CNN?
+    https://datascience.stackexchange.com/questions/25754/updating-the-weights-of-the-filters-in-a-cnn
+    Convolutional layers are different in that they have a fixed number of weights governed by the choice of filter size and number of filters, but independent of the input size.
+    Each filter has a separate weight in each position of its shape. So if you use two 3x3x3 filters then you will have 54 weights, again not counting bias. 
+    Follow the link for a visualization.
+
 ## Official Documentations
 
 1. ### LeNet in Gluon - "Dive into Deep Learning" Guide
