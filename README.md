@@ -46,8 +46,23 @@ The focus is on the train part only.
     https://medium.com/@mgazar/lenet-5-in-9-lines-of-code-using-keras-ac99294c8086
     The keras version is usable but the low level has to be readapted
 
+1. ### MXNet plus Horovod -> Distributed Deep Learning
+    https://medium.com/apache-mxnet/distributed-training-using-apache-mxnet-with-horovod-44f98bf0e7b7
+
+1. ### Everything you need to know about TF 2.0
+    Quick and easy overview of TF 2.0 without references to TF 1.
+    https://gilberttanner.com/blog/tensorflow-2-0-everything-you-need-to-know
+
+1. ### Various paradigm Declarative/Symbolic/Functional/Imperative in TF 2.0
+    https://medium.com/tensorflow/what-are-symbolic-and-imperative-apis-in-tensorflow-2-0-dfccecb01021
+
+1. ### Paradigm in MXNet
+    https://mxnet.apache.org/api/architecture/program_model
+    
 ## Official Documentations
 
 1. ### LeNet in Gluon - "Dive into Deep Learning" Guide
     https://d2l.ai/chapter_convolutional-neural-networks/lenet.html
 
+1. ### What are functions in TF 2.0 - How they are related to low level API
+    https://www.tensorflow.org/guide/function 
