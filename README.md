@@ -72,3 +72,9 @@ The focus is on the train part only.
 
 1. ### What are functions in TF 2.0 - How they are related to low level API
     https://www.tensorflow.org/guide/function 
+
+## Problems
+
+1. ### No Low-Level guide in TF 2.0
+    https://github.com/tensorflow/tensorflow/issues/33823
+    
