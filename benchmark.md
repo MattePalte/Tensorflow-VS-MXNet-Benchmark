@@ -8,3 +8,11 @@ The correct way to measure running time of MXNet models is to use MXNet profiler
 ```python
 from mxnet import profiler
 ```
+
+## Reproducible Results
+https://medium.com/datadriveninvestor/getting-reproducible-results-in-tensorflow-3705536aa185
+
+## Past works
+
+- Nvidia benchmark - Also pytorch and big datasets
+https://developer.nvidia.com/deep-learning-performance-training-inference
