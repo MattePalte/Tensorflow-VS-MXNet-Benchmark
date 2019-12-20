@@ -154,3 +154,7 @@ dot’s behavior depends on the input array dimensions:
 - N-D arrays: a sum product over the last axis of the first input and the first axis of the second input
 
 For example, given 3-D x with shape (n,m,k) and y with shape (k,r,s), the result array will have shape (n,m,r,s). It is computed by:
+
+## How to flatten a layer
+
+You have to .. bla bla ...
