@@ -16,9 +16,9 @@ more complex network (Recurrent?)
 1. Read first paper of MXNet and Tensorflow
 1. Capture the result of LeNet -> 6 million different verion of mnist (data augmentation is also possible)
 
-1. Explore low level linear algebra 
+1. Explore low level linear algebra (do some benchmarking)
 
-## ADditional notes
+## Additional notes
 Try running differnet ways of dot product -> emprical result which api is better (random matrices, dot product)
 
 Benchmark code-> for normal users like me 
