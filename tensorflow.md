@@ -9,7 +9,7 @@ TF 1.x : As you might recall, to build a Neural Net in TF 1.x, we needed to defi
 TF 2.0 : With eager execution, this changes. Now, TensorFlow code can be run like normal Python code. Eagerly. Meaning that operations are created and evaluated at once. TensorFlow 2.0 code looks a lot like NumPy code. In fact, TensorFlow and NumPy objects can easily be switched from one to the other. Hence, you do not need to worry about placeholders, Sessions, feed_dictionaties, etc.
 
 ### Recommended High-Level API
-In TF 2.0, tf.keras is the recommended high-level API.
+In TF 2.0, tf.keras is the recommended high-level API. And there are no Low-Level guide in TF 2.0 (https://github.com/tensorflow/tensorflow/issues/33823)
 
 ### Possible ways of Creating a Model in Keras tf 2.0
 source: https://www.pyimagesearch.com/2019/10/28/3-ways-to-create-a-keras-model-with-tensorflow-2-0-sequential-functional-and-model-subclassing/

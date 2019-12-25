@@ -95,10 +95,10 @@ Arguments:
 
 Return type: NDArray or list of NDArrays
 
-# How to create vector and dor product?
+# How to create vector and dot product?
 
 ### TF: tf.keras.backend.dot
-Alternatives: tf.tensordot - tf.matmul
+Alternatives: tf.tensordot
 
 Create a tensor: https://www.tensorflow.org/api_docs/python/tf/Tensor
 ```python
@@ -155,6 +155,110 @@ dot’s behavior depends on the input array dimensions:
 
 For example, given 3-D x with shape (n,m,k) and y with shape (k,r,s), the result array will have shape (n,m,r,s). It is computed by:
 
+## Matrix Multiplication
+
+### TF: tf.linalg.matmul
+
+Multiplies matrix a by matrix b, producing a * b.
+Note: This is matrix product, not element-wise product (refer to tf.math.multiply for that).
+
+Parameters:
+- a: Tensor of type float16, float32, float64, int32, complex64, complex128 and rank > 1.
+- b: Tensor with same type and rank as a.
+- transpose_a: If True, a is transposed before multiplication.
+- transpose_b: If True, b is transposed before multiplication.
+- adjoint_a: If True, a is conjugated and transposed before multiplication.
+- adjoint_b: If True, b is conjugated and transposed before multiplication.
+- a_is_sparse: If True, a is treated as a sparse matrix.
+- b_is_sparse: If True, b is treated as a sparse matrix.
+- name: Name for the operation (optional).
+
+Returns:
+
+- A Tensor of the same type as a and b where each inner-most matrix is the product of the corresponding matrices in a and b, e.g. if all transpose or adjoint attributes are False: 
+output[..., i, j] = sum_k (a[..., i, k] * b[..., k, j]), for all indices i, j.
+
+
+```python
+# 2-D tensor `a`
+# [[1, 2, 3],
+#  [4, 5, 6]]
+a = tf.constant([1, 2, 3, 4, 5, 6], shape=[2, 3])
+
+# 2-D tensor `b`
+# [[ 7,  8],
+#  [ 9, 10],
+#  [11, 12]]
+b = tf.constant([7, 8, 9, 10, 11, 12], shape=[3, 2])
+
+# `a` * `b`
+# [[ 58,  64],
+#  [139, 154]]
+c = tf.matmul(a, b)
+
+# Since python >= 3.5 the @ operator is supported (see PEP 465).
+# In TensorFlow, it simply calls the `tf.matmul()` function, so the
+# following lines are equivalent:
+d = a @ b @ [[10.], [11.]]
+d = tf.matmul(tf.matmul(a, b), [[10.], [11.]])
+```
+
+### MX: mxnet.ndarray.linalg.gemm2
+
+mxnet.ndarray.linalg.gemm2(A=None, B=None, transpose_a=_Null, transpose_b=_Null, alpha=_Null, axis=_Null, out=None, name=None, **kwargs)
+
+Parameters:
+- A (NDArray) – Tensor of input matrices
+- B (NDArray) – Tensor of input matrices
+- transpose_a (boolean, optional, default=0) – Multiply with transposed of first input (A).
+- transpose_b (boolean, optional, default=0) – Multiply with transposed of second input (B).
+- alpha (double, optional, default=1) – Scalar factor multiplied with A*B.
+- axis (int, optional, default='-2') – Axis corresponding to the matrix row indices.
+- out (NDArray, optional) – The output NDArray to hold the result.
+
+Returns:
+- out – The output of this function. Type: NDArray or list of NDArrays
+
+Performs general matrix multiplication. Input are tensors A, B, each of dimension n >= 2 and having the same shape on the leading n-2 dimensions.
+If n=2, the BLAS3 function gemm is performed:
+
+out = alpha * op(A) * op(B)
+
+Here alpha is a scalar parameter and op() is either the identity or the matrix transposition (depending on transpose_a, transpose_b).
+
+If n>2, gemm is performed separately for a batch of matrices. The column indices of the matrices are given by the last dimensions of the tensors, the row indices by the axis specified with the axis parameter. By default, the trailing two dimensions will be used for matrix encoding.
+```python
+Single matrix multiply
+A = [[1.0, 1.0], [1.0, 1.0]]
+B = [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0]]
+gemm2(A, B, transpose_b=True, alpha=2.0)
+         = [[4.0, 4.0, 4.0], [4.0, 4.0, 4.0]]
+
+Batch matrix multiply
+A = [[[1.0, 1.0]], [[0.1, 0.1]]]
+B = [[[1.0, 1.0]], [[0.1, 0.1]]]
+gemm2(A, B, transpose_b=True, alpha=2.0)
+        = [[[4.0]], [[0.04 ]]]
+```
+
 ## How to flatten a layer
 
-You have to .. bla bla ...
+### TF: tf.keras.layers.Flatten
+Flattens the input. Does not affect the batch size. If inputs are shaped (batch,) without a channel dimension, then flattening adds an extra channel dimension and output shapes are (batch, 1).
+```python
+model = Sequential()
+model.add(Convolution2D(filters = 64, kernel_size = 3, strides = 3,
+                        border_mode='same',
+                        input_shape=(3, 32, 32)))
+# now: model.output_shape == (None, 64, 32, 32)
+
+model.add(Flatten())
+# now: model.output_shape == (None, 65536) 
+```
+
+### MX: mxnet.gluon.nn.Flatten
+Flattens the input to two dimensional.
+
+Inputs -> data: input tensor with arbitrary shape (N, x1, x2, …, xn)
+
+Output -> out: 2D tensor with shape: (N, x1 cdot x2 cdot … cdot xn)

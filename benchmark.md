@@ -58,3 +58,7 @@ https://medium.com/datadriveninvestor/getting-reproducible-results-in-tensorflow
 https://developer.nvidia.com/deep-learning-performance-training-inference
 
 
+- Benchmark tf 1 vs numpy. Done in 2017
+https://towardsdatascience.com/numpy-vs-tensorflow-speed-on-matrix-calculations-9cbff6b3ce04
+
+
