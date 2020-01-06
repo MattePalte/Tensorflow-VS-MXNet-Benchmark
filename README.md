@@ -1,6 +1,41 @@
 # Tensorflow-VS-MXNet-Benchmark
 Comparison of Tensorflow and MXNet framworks using state-of-the-art networks. Some criteria such as training and inference cost, GPU and CPU performance, and software features (API and ...).
 
+# Goal: meeting date 3rd January
+
+## Presentation: 20 min
+- 2 min - Very brief intro to deep learning neural network
+- 3 min - Introduce the Big Picture - tensor and mxnet. linear algebra for DL
+Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do?
+- 4 min - Api differences -> comparison
+- 4 min - **microbenchmarking of fundamental operations** benchmarking results -> What we have done 
+- **run 10 epochs of lenet and compare results**
+- 5 min what is the plan -> digging deeper into system
+
+Goal: give the students some valuable advice base on their needs (size of dataset, complexity of network etc) what framwork they should use?
+
+### Assignment
+ - complete microbenchmarking of fundamental operations
+ - end-to-end network comparison
+
+### DL Division in 
+ - convolutional (LeNet)
+ - lstm 
+ - rnn
+ - ffnn
+
+for middterm -> good overview of microbenchmarking of fundamental doperations in the two frameworks
+change name -> fundamental operations
+add losses available in the two frameworks (cross entropy etc)
+
+### General notes
+- micro-benchmark - with random dat a in matrix multiplication -> how it scale, how fast do matrix, how much take to load csv file
+
+- notebook %timeit cell,
+dig deeper with python profiler if there are big differences
+
+- have a look at the framework https://github.com/vdeuschle/rysia to investigate ways of profiling deep learning libraries in a fair and objective ways independent from the library itself
+
 # Goal - Meeting date: 17 December
 
 ## Presentation: 20 min
