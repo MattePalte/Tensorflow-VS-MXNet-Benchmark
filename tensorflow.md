@@ -93,5 +93,42 @@ assert int(c) == 1</pre>
   </tr>
 </table>
 
+### Is low level worth it according to tf2? - official source
+
+source: https://www.tensorflow.org/guide/migrate
 
 Worthy of note here - in TensorFlow 1.x, the memory underlying the variables `W` and `b` in the runtime lives for the lifetime of the `Session` - unrelated to the lifetime of the Python objects. In 2.x, the lifetime of the Python objects and the runtime state are tied together.
+
+
+3. Upgrade your training loops
+
+Use the highest level API that works for your use case. Prefer tf.keras.Model.fit over building your own training loops.
+
+These high level functions manage a lot of the low-level details that might be easy to miss if you write your own training loop. For example, they automatically collect the regularization losses, and set the training=True argument when calling the model.
+
+### What's a tensor?
+
+source: https://pgaleone.eu/tensorflow/2018/07/28/understanding-tensorflow-tensors-shape-static-dynamic/#tensors-the-basic
+
+Every tensor has a name, a type, a rank and a shape.
+
+- The name uniquely identifies the tensor in the computational graphs (for a complete understanding of the importance of the tensor name and how the full name of a tensor is defined, I suggest the reading of the article Understanding Tensorflow using Go).
+
+- The type is the data type of the tensor, e.g.: a tf.float32, a tf.int64, a tf.string, …
+
+- The rank, in the Tensorflow world (that’s different from the mathematics world), is just the number of dimension of a tensor, e.g.: a scalar has rank 0, a vector has rank 1, …
+
+- The shape is the number of elements in each dimension, e.g.: a scalar has a rank 0 and an empty shape (), a vector has rank 1 and a shape of (D0), a matrix has rank 2 and a shape of (D0, D1) and so on.
+
+So you might wonder: what’s difficult about the shape of a tensor? It just looks easy, is the number of elements in each dimension, hence we can have a shape of () and be sure to work with a scalar, a shape of (10) and be sure to work with a vector of size 10, a shape of (10,2) and be sure to work with a matrix with 10 rows and 2 columns. Where’s the difficulty?
+
+#### Tensor’s shape
+
+The difficulties (and the cool stuff) arises when we dive deep into the Tensorflow peculiarities, and we find out that there’s no constraint about the definition of the shape of a tensor. Tensorflow, in fact, allows us to represent the shape of a Tensor in 3 different ways:
+
+- Fully-known shape: that are exactly the examples described above, in which we know the rank and the size for each dimension.
+- Partially-known shape: in this case, we know the rank, but we have an unknown size for one or more dimension (everyone that has trained a model in batch is aware of this, when we define the input we just specify the feature vector shape, letting the batch dimension set to None, e.g.: (None, 28, 28, 1).
+- Unknown shape and known rank: in this case we know the rank of the tensor, but we don’t know any of the dimension value, e.g.: (None, None, None).
+- Unknown shape and rank: this is the toughest case, in which we know nothing about the tensor; the rank nor the value of any dimension.
+
+Tensorflow, when used in its non-eager mode, separates the graph definition from the graph execution. This allows us to first define the relationships among nodes and only after executing the graph.
