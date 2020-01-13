@@ -1,6 +1,19 @@
 # Tensorflow-VS-MXNet-Benchmark
 Comparison of Tensorflow and MXNet framworks using state-of-the-art networks. Some criteria such as training and inference cost, GPU and CPU performance, and software features (API and ...).
 
+# Goal: meeting date 13rd January
+
+## Presentation: 20 min
+- 2 min - Very brief intro to deep learning neural network
+- 3 min - Introduce the Big Picture tools - tensor and mxnet. Historical differences. Define high level differences. Define if there are well know advantages one over the other. linear algebra for DL
+Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do? How is the distribution
+- 4 min - Api differences -> comparison -> show few line of code in each. Show simple lin alg op and some simple networks (MLP).
+if presenting lenet -> have to explain CNN how they work.
+if RNN -> have
+- 4 min - **microbenchmarking of fundamental operations** benchmarking results -> What we have done. Tips: run multiple times and take average and errorbar. Plot as funtion of input. 
+- **run 10 epochs of lenet and compare results**
+- 5 min what is the plan -> digging deeper into system
+
 # Goal: meeting date 3rd January
 
 ## Presentation: 20 min
