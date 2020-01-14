@@ -66,4 +66,6 @@ https://developer.nvidia.com/deep-learning-performance-training-inference
 - Benchmark tf 1 vs numpy. Done in 2017
 https://towardsdatascience.com/numpy-vs-tensorflow-speed-on-matrix-calculations-9cbff6b3ce04
 
+- Discussion Comparison mxnet and tf2 after release date
+https://discuss.mxnet.io/t/is-mxnet-still-faster-than-tensorflow-after-2-0-release/3613/8
 
