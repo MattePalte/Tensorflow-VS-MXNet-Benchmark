@@ -54,7 +54,16 @@ https://medium.com/datadriveninvestor/getting-reproducible-results-in-tensorflow
 
 ## Past works
 
+- tf 2 vs MXNet
+    *Part 1: Readability and Accuracy* https://medium.com/@mouryarishik/tensorflow-2-0-vs-mxnet-41edd3b7574f
+    *Part 2: LeNet with GPUs* https://medium.com/@mouryarishik/tensorflow-vs-mxnet-part-2-b14ff20377
+
+
 - Nvidia benchmark - Also pytorch and big datasets
 https://developer.nvidia.com/deep-learning-performance-training-inference
+
+
+- Benchmark tf 1 vs numpy. Done in 2017
+https://towardsdatascience.com/numpy-vs-tensorflow-speed-on-matrix-calculations-9cbff6b3ce04
 
 

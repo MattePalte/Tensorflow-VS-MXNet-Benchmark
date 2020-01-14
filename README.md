@@ -1,7 +1,76 @@
 # Tensorflow-VS-MXNet-Benchmark
 Comparison of Tensorflow and MXNet framworks using state-of-the-art networks. Some criteria such as training and inference cost, GPU and CPU performance, and software features (API and ...).
 
-# Goal
+# Goal: meeting date 13rd January
+
+## Presentation: 20 min
+- 2 min - Very brief intro to deep learning neural network
+- 3 min - Introduce the Big Picture tools - tensor and mxnet. Historical differences. Define high level differences. Define if there are well know advantages one over the other. linear algebra for DL
+Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do? How is the distribution
+- 4 min - Api differences -> comparison -> show few line of code in each. Show simple lin alg op and some simple networks (MLP).
+if presenting lenet -> have to explain CNN how they work.
+if RNN -> have
+- 4 min - **microbenchmarking of fundamental operations** benchmarking results -> What we have done. Tips: run multiple times and take average and errorbar. Plot as funtion of input. 
+- **run 10 epochs of lenet and compare results**
+- 5 min what is the plan -> digging deeper into system
+
+# Goal: meeting date 3rd January
+
+## Presentation: 20 min
+- 2 min - Very brief intro to deep learning neural network
+- 3 min - Introduce the Big Picture - tensor and mxnet. linear algebra for DL
+Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do?
+- 4 min - Api differences -> comparison
+- 4 min - **microbenchmarking of fundamental operations** benchmarking results -> What we have done 
+- **run 10 epochs of lenet and compare results**
+- 5 min what is the plan -> digging deeper into system
+
+Goal: give the students some valuable advice base on their needs (size of dataset, complexity of network etc) what framwork they should use?
+
+### Assignment
+ - complete microbenchmarking of fundamental operations
+ - end-to-end network comparison
+
+### DL Division in 
+ - convolutional (LeNet)
+ - lstm 
+ - rnn
+ - ffnn
+
+for middterm -> good overview of microbenchmarking of fundamental doperations in the two frameworks
+change name -> fundamental operations
+add losses available in the two frameworks (cross entropy etc)
+
+### General notes
+- micro-benchmark - with random dat a in matrix multiplication -> how it scale, how fast do matrix, how much take to load csv file
+
+- notebook %timeit cell,
+dig deeper with python profiler if there are big differences
+
+- have a look at the framework https://github.com/vdeuschle/rysia to investigate ways of profiling deep learning libraries in a fair and objective ways independent from the library itself
+
+# Goal - Meeting date: 17 December
+
+## Presentation: 20 min
+- 2 min - Very brief intro to deep learning neural network
+- 3 min - Introduce the Big Picture - tensor and mxnet. linear algebra for DL
+Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do?
+- 4 min - Api differences -> comparison
+- 4 min -> benchmarking results -> What we have done 
+- 5 min what is the plan -> digging deeper into system
+more complex network (Recurrent?)
+
+## Next steps 
+1. Read first paper of MXNet and Tensorflow
+1. Capture the result of LeNet -> 6 million different verion of mnist (data augmentation is also possible)
+1. Explore low level linear algebra (do some benchmarking)
+
+## Additional notes/suggestions
+- Try running differnet ways of dot product -> emprical result which api is better (random matrices, dot product)
+- Benchmark code-> for normal users like me 
+- Show two lenet 
+
+# Goal - Meeting date: 4 December
 Abstraction |Tensorflow | MXNet
 -------------|--------------|--------------
 High Level | e.g. Keras | e.g. Gluon
@@ -23,58 +92,3 @@ The focus is on the train part only.
 1. readability
 
 
-# Resources
-
-## Blog Articles
-
-1. ### Tensorflow vs Mxnet - Part 1 - Multi-Layer Perceptron (Dataset = MNIST)
-    https://medium.com/@mouryarishik/tensorflow-2-0-vs-mxnet-41edd3b7574f
-
-    Compare nets with timing: 
-    * Keras(TF), 
-    * Gluon(MXNet), 
-    * mxnet-module(MXNet)
-
-    Naive approach in comparing results (e.g. no multiple runs, no enforcement of same initialization, no multiple run average)
-
-1. ### Tensorflow vs Mxnet - Part 2 - LeNet (Dataset = MNIST)
-    https://medium.com/@mouryarishik/tensorflow-vs-mxnet-part-2-b14ff20377
-
-    Same author as above, same procedure.
-
-1. ### LeNet in Tensorflow - but 1.4 version :(
-    https://medium.com/@mgazar/lenet-5-in-9-lines-of-code-using-keras-ac99294c8086
-    The keras version is usable but the low level has to be readapted
-
-1. ### MXNet plus Horovod -> Distributed Deep Learning
-    https://medium.com/apache-mxnet/distributed-training-using-apache-mxnet-with-horovod-44f98bf0e7b7
-
-1. ### Everything you need to know about TF 2.0
-    Quick and easy overview of TF 2.0 without references to TF 1.
-    https://gilberttanner.com/blog/tensorflow-2-0-everything-you-need-to-know
-
-1. ### Various paradigm Declarative/Symbolic/Functional/Imperative in TF 2.0
-    https://medium.com/tensorflow/what-are-symbolic-and-imperative-apis-in-tensorflow-2-0-dfccecb01021
-
-1. ### Paradigm in MXNet
-    https://mxnet.apache.org/api/architecture/program_model
-    
-1. ### Which weights are learned in CNN?
-    https://datascience.stackexchange.com/questions/25754/updating-the-weights-of-the-filters-in-a-cnn
-    Convolutional layers are different in that they have a fixed number of weights governed by the choice of filter size and number of filters, but independent of the input size.
-    Each filter has a separate weight in each position of its shape. So if you use two 3x3x3 filters then you will have 54 weights, again not counting bias. 
-    Follow the link for a visualization.
-
-## Official Documentations
-
-1. ### LeNet in Gluon - "Dive into Deep Learning" Guide
-    https://d2l.ai/chapter_convolutional-neural-networks/lenet.html
-
-1. ### What are functions in TF 2.0 - How they are related to low level API
-    https://www.tensorflow.org/guide/function 
-
-## Problems
-
-1. ### No Low-Level guide in TF 2.0
-    https://github.com/tensorflow/tensorflow/issues/33823
-    
