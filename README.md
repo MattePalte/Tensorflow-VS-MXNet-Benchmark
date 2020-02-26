@@ -3,23 +3,24 @@ Comparison of Tensorflow and MXNet framworks using state-of-the-art networks. So
 
 # Meeting 24 February
 
-Kaoutar findings:
-- Model fit generator (introduced in 2.0) is faster
-- Eager execution slows down in TF 2.0
-- TF is best in distributed environment
-Next steps
+### Kaoutar findings:
+- Model fit generator (introduced in 2.0) is faster than fit
+- Eager execution introduced in 2.0 slowed down the execution
+- TF has the best performance improvement in distributed setting
+### Kaoutar Next steps
 - compute by hand if the speedup in the train of acomplete nework is aligned with the fundamental operations
 - Try easy setup/standard: for normal user
 - Try advanced setup: XLA and disable eager generator
 
-Matteo:
+### Matteo findings:
+- cProfile not so useful (the core operation are hidden)
+- Mxnet is calling blas directly and memory in place operation (citation amazon paper 25 August 2019)
+### Matteo Next steps:
 - Analyze each of this optimization separately
+- Analyze which is the dimensions of matrices in real world scenarios
 - Try convolution op benchmark
 - See if MXNet has technical optimizations not enable by default
-Next steps:
 - Try once with bigger dataset. ImageNet competition. At least once (basic vs fully optimized trend)
-
-(real word scenario)
 
 Q: can you explain the difference in runtime just with the difference in fundamental operations? -> quote the paper
 
@@ -29,8 +30,7 @@ Select only some of the figure and explain the trend.
 ### Readme: 
 - machine used
 - package used
-
-
+- How to setup the environment
 
 # Meeting 28th January
 - try run with GPU on the cluster
