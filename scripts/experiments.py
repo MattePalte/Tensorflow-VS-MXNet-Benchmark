@@ -21,11 +21,11 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"hm:v:e:d:",["mode=","verbose=","multiplier_easy=", "multiplier_hard="])
     except getopt.GetoptError:
-        print('test.py -m <cpu or gpu> -verbose <true or false> -m1 <1 if easy, 100 if hard> -m2 <1 if easy, 100 if hard>')
+        print('test.py -m <cpu or gpu> -verbose <true or false> -e <1 if easy, 100 if hard> -d <1 if easy, 100 if hard>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('test.py -m <cpu or gpu> -verbose <true or false> -m1 <1 if easy, 100 if hard> -m2 <1 if easy, 10 if hard>')
+            print('test.py -m <cpu or gpu> -verbose <true or false> -e <1 if easy, 100 if hard> -d <1 if easy, 10 if hard>')
             sys.exit()
         elif opt in ("-m", "--mode"):
             mode = arg
@@ -203,5 +203,7 @@ def main(argv):
                                                             common=common_params, mx_only=mx_params, tf_only=tf_params,
                                                             verbose=False)
     df_normalize.to_csv("EX6-Normalize-Matrix.csv", index=False)
+
+
 if __name__ == "__main__":
    main(sys.argv[1:])

@@ -69,3 +69,6 @@ https://towardsdatascience.com/numpy-vs-tensorflow-speed-on-matrix-calculations-
 - Discussion Comparison mxnet and tf2 after release date
 https://discuss.mxnet.io/t/is-mxnet-still-faster-than-tensorflow-after-2-0-release/3613/8
 
+- Github comparison many framework
+https://github.com/ilkarman/DeepLearningFrameworks
+
