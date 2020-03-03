@@ -1,6 +1,19 @@
 # Tensorflow-VS-MXNet-Benchmark
 Comparison of Tensorflow and MXNet framworks using state-of-the-art networks. Some criteria such as training and inference cost, GPU and CPU performance, and software features (API and ...).
 
+# Meeting 3 March
+
+# Matteo findings
+- rewritten LeNet comparisons, same network same optimizers + optimization XLA and Hybridize
+- mxnet optimization reasearch: optimzer Hybridize for Gluon 
+- explained how to pass from convolution to matrix multiplication (im2col algorithm)
+- tried to train neural network with bigger dataset of images:
+    - imagenet too big 100-200 gb
+    - idea finetuning -> medical images -> having problems
+    - Cifar10 -> training from scratch -> still working
+
+
+
 # Meeting 24 February
 
 ### Kaoutar findings:
