@@ -1,7 +1,12 @@
 # Tensorflow-VS-MXNet-Benchmark
 Comparison of Tensorflow and MXNet framworks using state-of-the-art networks. Some criteria such as training and inference cost, GPU and CPU performance, and software features (API and ...).
 
-# Meeting 3 March
+# Meeting 4 March
+
+# Kaoutar findings
+- fit generator discussion
+- xla on lenet
+- problem with gpu
 
 # Matteo findings
 - rewritten LeNet comparisons, same network same optimizers + optimization XLA and Hybridize
@@ -11,6 +16,27 @@ Comparison of Tensorflow and MXNet framworks using state-of-the-art networks. So
     - imagenet too big 100-200 gb
     - idea finetuning -> medical images -> having problems
     - Cifar10 -> training from scratch -> still working
+
+# Kaoutar 
+- get more info on XLA
+- image generator fit(pandas frame) vs fit(image data generator)
+- tf2 on cifar with and without XLA
+
+# Matteo
+- explain: get more info on Hybridize
+- explain : time of GCPU, sys
+- code: network that works on cifar10
+
+# outline in tables
+image generator fit(pandas frame) vs fit(image data generator)
+
+lenet - one table tf (xla vs normal)
+lenet - one table mxnet (hybridize vs normal)
+
+one table tf on CIFAR10 (xla vs normal)
+one table mxnet on CIFAR (hybridize vs normal)
+
+* recap 5 min previous presentation
 
 
 
