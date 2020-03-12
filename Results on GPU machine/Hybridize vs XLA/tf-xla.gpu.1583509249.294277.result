@@ -1,0 +1,1 @@
+{"epochs": 50, "framework": "TF", "time": 325.02797129899994, "optimization": true, "runtime": "gpu", "accuracy": "0.986"}

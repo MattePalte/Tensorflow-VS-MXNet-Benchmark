@@ -1,205 +1,44 @@
-# Tensorflow-VS-MXNet-Benchmark
-Comparison of Tensorflow and MXNet framworks using state-of-the-art networks. Some criteria such as training and inference cost, GPU and CPU performance, and software features (API and ...).
+# Benchmark of TensorFlow 2.1 and MXNet 1.5
 
-# Meeting 4 March
+This repo is organized in the following folders:
+- Literature: official papers about the two frameworks published by their creators (i.e. Google and Amazon) plus some related work in terms of benchmark
+- Developement Notebook: it contains various Python notebooks used to test various ideas and networks
+- Scripts: contains the final version of code snippets used to reproduce the experiments
+- Results on GPU machine: it contains all the generated files produced during the Benchmark A (fundamental operations) and Benchmark C (optimization hybridize vs XLA)
+- Discussion: some markdown file that we used in the team to share findings and organize the work
 
-# Kaoutar findings
-- fit generator discussion
-- xla on lenet
-- problem with gpu
+# Benchmarks contained
 
-# Matteo findings
-- rewritten LeNet comparisons, same network same optimizers + optimization XLA and Hybridize
-- mxnet optimization reasearch: optimzer Hybridize for Gluon 
-- explained how to pass from convolution to matrix multiplication (im2col algorithm)
-- tried to train neural network with bigger dataset of images:
-    - imagenet too big 100-200 gb
-    - idea finetuning -> medical images -> having problems
-    - Cifar10 -> training from scratch -> still working
+In the context of Big Data Analytics Project, the following benchmarks were carried out under the supervision of Behrouz Derakhshan:
+Benchmark A: Benchmarking of low level fundamental operations on both GPU and CPU
+Benchmark B: End-to-End benchmark of LeNet Convolutional Neural Network training on CPU and GPU
+Benchmark C: End-to-end benchmark of XLA and Hybridised on LeNet on CPU and GPU
+Benchmark D: Benchmark of TensorFlow optimizations: eager execution and XLA.
 
-# Kaoutar 
-- get more info on XLA
-- image generator fit(pandas frame) vs fit(image data generator)
-- tf2 on cifar with and without XLA
+For a better description of consult the report.pdf file in the main folder
 
-# Matteo
-- explain: get more info on Hybridize
-- explain : time of GCPU, sys
-- code: network that works on cifar10
+# How to reproduce the benchmarks
 
-# outline in tables
-image generator fit(pandas frame) vs fit(image data generator)
+## Requirements
+- PC with GPU with computational capabilities 5.2 or more
+- Instal Nvidia Grapich Card & Drivers
+- Install compatible CUDA drivers
+- Install compatible cuDNN drivers
+- Check your newly installed drivers with “nvidia-smi” command
+- Install TensorFlow 2.1 via pip install tensorflow==2.1
+- Instal MXNet 1.5 via pip install mxnet==1.5.2
 
-lenet - one table tf (xla vs normal)
-lenet - one table mxnet (hybridize vs normal)
+## Benchmark A: Fundamental Operations
 
-one table tf on CIFAR10 (xla vs normal)
-one table mxnet on CIFAR (hybridize vs normal)
+1. Go to folder scripts
+1. Launch jupyter notebbok
+1. Open the notebook "Benchmark A"
+1. follow the instuctions there
 
-* recap 5 min previous presentation
+Optional: to visualize data with a quantile visualization move you result in the "Results on GPU machine" folder and use the notebook "Visualize Fundam Ops Quantile Trend" that is there
 
-
-
-# Meeting 24 February
-
-### Kaoutar findings:
-- Model fit generator (introduced in 2.0) is faster than fit
-- Eager execution introduced in 2.0 slowed down the execution
-- TF has the best performance improvement in distributed setting
-### Kaoutar Next steps
-- compute by hand if the speedup in the train of acomplete nework is aligned with the fundamental operations
-- Try easy setup/standard: for normal user
-- Try advanced setup: XLA and disable eager generator
-
-### Matteo findings:
-- cProfile not so useful (the core operation are hidden)
-- Mxnet is calling blas directly and memory in place operation (citation amazon paper 25 August 2019)
-### Matteo Next steps:
-- Analyze each of this optimization separately
-- Analyze which is the dimensions of matrices in real world scenarios
-- Try convolution op benchmark
-- See if MXNet has technical optimizations not enable by default
-- Try once with bigger dataset. ImageNet competition. At least once (basic vs fully optimized trend)
-
-Q: can you explain the difference in runtime just with the difference in fundamental operations? -> quote the paper
-
-### Slide
-Select only some of the figure and explain the trend.
-
-### Readme: 
-- machine used
-- package used
-- How to setup the environment
-
-# Meeting 28th January
-- try run with GPU on the cluster
-
-- LeNet (Kaoutar) -> run on CPU and GPU on CLUSTER
-- Fundamental Ops (Matteo) -> run CPU and GPU on CLUSTER -> increment the dimensions of input (based on a realistic network)
-- Other metrics (Matteo) -> (does it exists a light weight library) -> CPU/GPU usage and RAM -> useful to explain the results
-
-- Reproduce the Paper's result -> with 2 dataset out of 4 (Kaoutar)
-    - Handwritten digits classification with feed forward networks (MNIST) 
-    - Image classification with convolutional networks (CIFAR-10)
-    - (x) Sentiment analysis with LSTM Networks (IMDB)
-
-Collect data from official sources
-
-- Does it make sense to change network? or mxnet is clearly better from now?
-
-REPORT -> Interpretation of results:
-- if MXNET clearly better: Why is MXNet better? Convince the audience (TF employees) that our results are motivated. Which is the cause of this inefficiencies?
-ACM Double Column paper -> Conference style (8 pages)
-INTRO -> EVALUATION -> CONCLUSION (VERY IMORTANT) -> METASECTIONS (what we have done)
-- bit of background of deep learning
-- framworks
-- details of each framework 
-    - features wise comparison? (fundam operation lin alg, usability, emprical results) then summarize at the end of each feature
-    - all tf first then all MXnet 
-- discussion to summarize and gives our reasoning (why is it like that?)
-- discribe other systems (pythorch, ) and other benchmark (rysia) cite different papers
-- mentions how we come up with those info (blogs, authors of tf and mxnet, ) -> lot of references
-
-CLUSTER:
-- we will receive the 
-- check the calendar
-- critical (experiment important -> noone is using it)
-- shared (can be used by someone else)
-
-Ideas:
-- reproduce one result of the paper at least for one dataset (also CIFAR dataset)
-- start with lenet with a bigger dataset 
-- try with Imagenet competiton newtorks ()
-- pick a more recent and realistic network
-
-# Goal: meeting date 13rd January
-
-## Presentation: 20 min
-- 2 min - Very brief intro to deep learning neural network
-- 3 min - Introduce the Big Picture tools - tensor and mxnet. Historical differences. Define high level differences. Define if there are well know advantages one over the other. linear algebra for DL
-Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do? How is the distribution
-- 4 min - Api differences -> comparison -> show few line of code in each. Show simple lin alg op and some simple networks (MLP).
-if presenting lenet -> have to explain CNN how they work.
-if RNN -> have
-- 4 min - **microbenchmarking of fundamental operations** benchmarking results -> What we have done. Tips: run multiple times and take average and errorbar. Plot as funtion of input. 
-- **run 10 epochs of lenet and compare results**
-- 5 min what is the plan -> digging deeper into system
-
-# Goal: meeting date 3rd January
-
-## Presentation: 20 min
-- 2 min - Very brief intro to deep learning neural network
-- 3 min - Introduce the Big Picture - tensor and mxnet. linear algebra for DL
-Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do?
-- 4 min - Api differences -> comparison
-- 4 min - **microbenchmarking of fundamental operations** benchmarking results -> What we have done 
-- **run 10 epochs of lenet and compare results**
-- 5 min what is the plan -> digging deeper into system
-
-Goal: give the students some valuable advice base on their needs (size of dataset, complexity of network etc) what framwork they should use?
-
-### Assignment
- - complete microbenchmarking of fundamental operations
- - end-to-end network comparison
-
-### DL Division in 
- - convolutional (LeNet)
- - lstm 
- - rnn
- - ffnn
-
-for middterm -> good overview of microbenchmarking of fundamental doperations in the two frameworks
-change name -> fundamental operations
-add losses available in the two frameworks (cross entropy etc)
-
-### General notes
-- micro-benchmark - with random dat a in matrix multiplication -> how it scale, how fast do matrix, how much take to load csv file
-
-- notebook %timeit cell,
-dig deeper with python profiler if there are big differences
-
-- have a look at the framework https://github.com/vdeuschle/rysia to investigate ways of profiling deep learning libraries in a fair and objective ways independent from the library itself
-
-# Goal - Meeting date: 17 December
-
-## Presentation: 20 min
-- 2 min - Very brief intro to deep learning neural network
-- 3 min - Introduce the Big Picture - tensor and mxnet. linear algebra for DL
-Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do?
-- 4 min - Api differences -> comparison
-- 4 min -> benchmarking results -> What we have done 
-- 5 min what is the plan -> digging deeper into system
-more complex network (Recurrent?)
-
-## Next steps 
-1. Read first paper of MXNet and Tensorflow
-1. Capture the result of LeNet -> 6 million different verion of mnist (data augmentation is also possible)
-1. Explore low level linear algebra (do some benchmarking)
-
-## Additional notes/suggestions
-- Try running differnet ways of dot product -> emprical result which api is better (random matrices, dot product)
-- Benchmark code-> for normal users like me 
-- Show two lenet 
-
-# Goal - Meeting date: 4 December
-Abstraction |Tensorflow | MXNet
--------------|--------------|--------------
-High Level | e.g. Keras | e.g. Gluon
-Low Level | variable API | MXNet Library
-
-### Things to pay attention to:
-1. Use same random seed (if possible)
-1. Fix the same initialization (in terms of weight)
-1. Same hyperparameters (e.g. optimizer, nr epochs, ...)
-1. The accuracy should be the same (since the operations must be the same)
-1. If not possible to enforce same random seed, run the train multiple times and take the average
-
-### Caracteristics to compare:
-The focus is on the train part only.
-1. CPU (train time)
-1. GPU - if available (train time)
-1. Memory usage 
-1. nr lines of code
-1. readability
-
-
+## Benchmark C: Hybridize vs XLA
+1. Go to folder scripts
+1. Launch jupyter notebbok
+1. Open the notebook "Benchmark C"
+1. follow the instuctions there
