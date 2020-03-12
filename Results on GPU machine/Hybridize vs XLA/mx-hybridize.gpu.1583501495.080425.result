@@ -1,0 +1,1 @@
+{"time": 94.81728274400001, "optimization": true, "runtime": "gpu", "framework": "MX", "accuracy": "0.9854", "epochs": 15}

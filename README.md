@@ -1,94 +1,61 @@
-# Tensorflow-VS-MXNet-Benchmark
-Comparison of Tensorflow and MXNet framworks using state-of-the-art networks. Some criteria such as training and inference cost, GPU and CPU performance, and software features (API and ...).
+# Benchmark of TensorFlow 2.1 and MXNet 1.5
 
-# Goal: meeting date 13rd January
+This repo is organized in the following folders:
+- Literature: official papers about the two frameworks published by their creators (i.e. Google and Amazon) plus some related work in terms of benchmark
+- Developement Notebook: it contains various Python notebooks used to test various ideas and networks
+- Scripts: contains the final version of code snippets used to reproduce the experiments
+- Results on GPU machine: it contains all the generated files produced during the Benchmark A (fundamental operations) and Benchmark C (optimization hybridize vs XLA)
+- Discussion: some markdown file that we used in the team to share findings and organize the work
 
-## Presentation: 20 min
-- 2 min - Very brief intro to deep learning neural network
-- 3 min - Introduce the Big Picture tools - tensor and mxnet. Historical differences. Define high level differences. Define if there are well know advantages one over the other. linear algebra for DL
-Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do? How is the distribution
-- 4 min - Api differences -> comparison -> show few line of code in each. Show simple lin alg op and some simple networks (MLP).
-if presenting lenet -> have to explain CNN how they work.
-if RNN -> have
-- 4 min - **microbenchmarking of fundamental operations** benchmarking results -> What we have done. Tips: run multiple times and take average and errorbar. Plot as funtion of input. 
-- **run 10 epochs of lenet and compare results**
-- 5 min what is the plan -> digging deeper into system
+# Benchmarks contained
 
-# Goal: meeting date 3rd January
+In the context of Big Data Analytics Project, the following benchmarks were carried out under the supervision of Behrouz Derakhshan:
+Benchmark A: Benchmarking of low level fundamental operations on both GPU and CPU
+Benchmark B: End-to-End benchmark of LeNet Convolutional Neural Network training on CPU and GPU
+Benchmark C: End-to-end benchmark of XLA and Hybridised on LeNet on CPU and GPU
+Benchmark D: Benchmark of TensorFlow optimizations: eager execution and XLA.
 
-## Presentation: 20 min
-- 2 min - Very brief intro to deep learning neural network
-- 3 min - Introduce the Big Picture - tensor and mxnet. linear algebra for DL
-Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do?
-- 4 min - Api differences -> comparison
-- 4 min - **microbenchmarking of fundamental operations** benchmarking results -> What we have done 
-- **run 10 epochs of lenet and compare results**
-- 5 min what is the plan -> digging deeper into system
+For a better description of consult the report.pdf file in the main folder
 
-Goal: give the students some valuable advice base on their needs (size of dataset, complexity of network etc) what framwork they should use?
+# How to reproduce the benchmarks
 
-### Assignment
- - complete microbenchmarking of fundamental operations
- - end-to-end network comparison
+## Requirements
+- PC with GPU with computational capabilities 5.2 or more
+- Instal Nvidia Grapich Card & Drivers
+- Install compatible CUDA drivers
+- Install compatible cuDNN drivers
+- Check your newly installed drivers with “nvidia-smi” command
+- Install TensorFlow 2.1 via pip install tensorflow==2.1
+- Instal MXNet 1.5 via pip install mxnet==1.5.2
 
-### DL Division in 
- - convolutional (LeNet)
- - lstm 
- - rnn
- - ffnn
+## Benchmark A: Fundamental Operations
 
-for middterm -> good overview of microbenchmarking of fundamental doperations in the two frameworks
-change name -> fundamental operations
-add losses available in the two frameworks (cross entropy etc)
+1. Go to folder scripts
+2. Launch jupyter notebbok
+3. Open the notebook "Benchmark A"
+4. follow the instuctions there
 
-### General notes
-- micro-benchmark - with random dat a in matrix multiplication -> how it scale, how fast do matrix, how much take to load csv file
+Optional: to visualize data with a quantile visualization move you result in the "Results on GPU machine" folder and use the notebook "Visualize Fundam Ops Quantile Trend" that is there
 
-- notebook %timeit cell,
-dig deeper with python profiler if there are big differences
+## Benchmark B: LeNet - End-to-End
 
-- have a look at the framework https://github.com/vdeuschle/rysia to investigate ways of profiling deep learning libraries in a fair and objective ways independent from the library itself
+1. Go to folder scripts
+2. Launch jupyter notebbok
+3. Open the notebook "Benchmark B and D - LeNet  - Tensorflow with Eagerexecution OnOff - Final "
+4. Open the notebook "Benchmark B - LeNet  - MXNet - Final "
+5. Follow the instuctions there, or you can simply click on "Kernal", then "Restart and Run All"
 
-# Goal - Meeting date: 17 December
+## Benchmark C: Hybridize vs XLA
+1. Go to folder scripts
+2. Launch jupyter notebbok
+3. Open the notebook "Benchmark C"
+4. follow the instuctions there
 
-## Presentation: 20 min
-- 2 min - Very brief intro to deep learning neural network
-- 3 min - Introduce the Big Picture - tensor and mxnet. linear algebra for DL
-Find original paper (vision paper). What's the overall architectecutre of the system (tf -> DAG). Mxnet (parameter severs style?). Which scheduling do they do?
-- 4 min - Api differences -> comparison
-- 4 min -> benchmarking results -> What we have done 
-- 5 min what is the plan -> digging deeper into system
-more complex network (Recurrent?)
+## Benchmark D: Tensorflow Optimizations
 
-## Next steps 
-1. Read first paper of MXNet and Tensorflow
-1. Capture the result of LeNet -> 6 million different verion of mnist (data augmentation is also possible)
-1. Explore low level linear algebra (do some benchmarking)
-
-## Additional notes/suggestions
-- Try running differnet ways of dot product -> emprical result which api is better (random matrices, dot product)
-- Benchmark code-> for normal users like me 
-- Show two lenet 
-
-# Goal - Meeting date: 4 December
-Abstraction |Tensorflow | MXNet
--------------|--------------|--------------
-High Level | e.g. Keras | e.g. Gluon
-Low Level | variable API | MXNet Library
-
-### Things to pay attention to:
-1. Use same random seed (if possible)
-1. Fix the same initialization (in terms of weight)
-1. Same hyperparameters (e.g. optimizer, nr epochs, ...)
-1. The accuracy should be the same (since the operations must be the same)
-1. If not possible to enforce same random seed, run the train multiple times and take the average
-
-### Caracteristics to compare:
-The focus is on the train part only.
-1. CPU (train time)
-1. GPU - if available (train time)
-1. Memory usage 
-1. nr lines of code
-1. readability
-
+1. Go to folder scripts
+2. Launch jupyter notebbok
+3. Open the notebook "Benchmark B and D - LeNet  - Tensorflow with Eagerexecution OnOff - Final "
+4. Open the notebook "Benchmark D - Classifying CIFAR-10 with XLA "
+5. Follow the instuctions there, or you can simply click on "Kernal", then "Restart and Run All"
 

@@ -1,0 +1,1 @@
+{"epochs": 3, "runtime": "cpu", "time": 144.135468146, "accuracy": "0.978", "framework": "MX", "optimization": true}

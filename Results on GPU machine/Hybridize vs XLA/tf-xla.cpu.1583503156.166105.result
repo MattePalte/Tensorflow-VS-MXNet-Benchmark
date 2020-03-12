@@ -1,0 +1,1 @@
+{"framework": "TF", "runtime": "cpu", "optimization": true, "time": 1311.772693724, "epochs": 15, "accuracy": "0.9864"}
