@@ -39,7 +39,7 @@ Optional: to visualize data with a quantile visualization move you result in the
 
 ## Benchmark B: LeNet - End-to-End
 
-1. Go to folder scripts
+1. Go to folder Developement Notebooks
 2. Launch jupyter notebbok
 3. Open the notebook "Benchmark B and D - LeNet  - Tensorflow with Eagerexecution OnOff - Final "
 4. Open the notebook "Benchmark B - LeNet  - MXNet - Final "
@@ -53,7 +53,7 @@ Optional: to visualize data with a quantile visualization move you result in the
 
 ## Benchmark D: Tensorflow Optimizations
 
-1. Go to folder scripts
+1. Go to folder Developement Notebooks
 2. Launch jupyter notebbok
 3. Open the notebook "Benchmark B and D - LeNet  - Tensorflow with Eagerexecution OnOff - Final "
 4. Open the notebook "Benchmark D - Classifying CIFAR-10 with XLA "
