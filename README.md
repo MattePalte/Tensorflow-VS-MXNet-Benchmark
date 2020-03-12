@@ -31,14 +31,31 @@ For a better description of consult the report.pdf file in the main folder
 ## Benchmark A: Fundamental Operations
 
 1. Go to folder scripts
-1. Launch jupyter notebbok
-1. Open the notebook "Benchmark A"
-1. follow the instuctions there
+2. Launch jupyter notebbok
+3. Open the notebook "Benchmark A"
+4. follow the instuctions there
 
 Optional: to visualize data with a quantile visualization move you result in the "Results on GPU machine" folder and use the notebook "Visualize Fundam Ops Quantile Trend" that is there
 
+## Benchmark B: LeNet - End-to-End
+
+1. Go to folder scripts
+2. Launch jupyter notebbok
+3. Open the notebook "Benchmark B and D - LeNet  - Tensorflow with Eagerexecution OnOff - Final "
+4. Open the notebook "Benchmark B - LeNet  - MXNet - Final "
+5. Follow the instuctions there, or you can simply click on "Kernal", then "Restart and Run All"
+
 ## Benchmark C: Hybridize vs XLA
 1. Go to folder scripts
-1. Launch jupyter notebbok
-1. Open the notebook "Benchmark C"
-1. follow the instuctions there
+2. Launch jupyter notebbok
+3. Open the notebook "Benchmark C"
+4. follow the instuctions there
+
+## Benchmark D: Tensorflow Optimizations
+
+1. Go to folder scripts
+2. Launch jupyter notebbok
+3. Open the notebook "Benchmark B and D - LeNet  - Tensorflow with Eagerexecution OnOff - Final "
+4. Open the notebook "Benchmark D - Classifying CIFAR-10 with XLA "
+5. Follow the instuctions there, or you can simply click on "Kernal", then "Restart and Run All"
+
